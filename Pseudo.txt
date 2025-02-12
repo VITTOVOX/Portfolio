@@ -1,0 +1,81 @@
+An algorithm that ask a user to enter a positivie number repeatedly until the user enter a zero value, then determines and outputes the largest of the numbers that were input
+Pseudo code
+Begin
+	Print "Enter a positivie number, Press 0 to end program"
+	User_Input
+	If input < 0 
+	Then program Ends 
+	If input > 0 
+	Then user_inputer > largest_number 
+	If user_inputer > largest_number 
+	Set user_input as largest_number
+	Else use_input is invalid 
+	Print "Please try again"
+	End 
+	
+	_______________________
+	
+	An algorithm that reads an abitrary number of integers and then returns thir arithmetic average
+	Pseudo code
+	Begin
+	Sum set to 0  // Store all numbers
+	Count set 0  // Store all inputs
+	
+	Print "Please enter a integers or Type Done to finish"
+	If user typed "Done" end program
+	
+	Convert User_Input to integers as number 
+	Sum set to sum + number  // Add the input to Sum 
+	Count set to + 1   // Increment count 
+	End
+	
+	If user enter "0"
+	Print "No numbers were Entered" 
+	But else print "The numbers arithmetic average: " 
+	
+	_______________________
+	
+	An algorithm that reads a grocery list and prints out the products (in alphabitcal order) that are still left to buy
+	Pseudo code
+	Begin
+
+	Create  A empty list for grocery_list and Bought_Items
+	Print "Please input the Items you need to buy then type Done to Make grocery list."
+	IF item "Done" end 
+	Add items to grocery_list
+	
+	Print "Please input items that have been bought, type Done with finished"
+	If item "Done" end
+	Add items to Bought_Items
+	
+	Determine Items still left to buy create a empty list items_left
+	If list is empty 
+	Print "All done!"
+	Else Print eash item left in grocery_list
+	END
+	
+	_______________________
+	
+	START -> READ X,Y -> S = X + Y  A = S/2 P = Xx Y -> write S, A, P, -> Stop
+	Pseudo code
+	BEGIN
+    // Step 1: Read two numbers X and Y
+    PROMPT "Enter the first number (X): "
+    READ X
+
+    PROMPT "Enter the second number (Y): "
+    READ Y
+
+    // Step 2: Perform calculations
+    SET S TO X + Y          // Sum of X and Y
+    SET A TO S / 2          // Average of X and Y
+    SET P TO X * Y          // Product of X and Y
+
+    // Step 3: Display results
+    PRINT "Sum (S): ", S
+    PRINT "Average (A): ", A
+    PRINT "Product (P): ", P
+
+END
+	
+	
