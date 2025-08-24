@@ -1,81 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A personal portfolio showcasing my projects and skills.">
-    <meta name="author" content="Vittorio Ratto">
-    <meta name="keywords" content="portfolio, web developer, projects, contact">
-    <title>Vittorio Ratto | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vittorio Ratto — Portfolio</title>
+<meta name="description" content="Portfolio of Vittorio Ratto — software engineer, designer, and programmer." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0f1115; --panel:#141821; --text:#e7eaf1; --sub:#aab0bf;
+--brand:#8fa7ff; --accent:#6ee7b7; --card:#161c25; --muted:#1b2130;
+--ring:rgba(143,167,255,.28); --shadow:0 10px 30px rgba(2,10,26,.35); --r:16px;
+}
+html.light{ --bg:#f7f9fc; --panel:#ffffff; --text:#131826; --sub:#5b6476; --card:#ffffff; --muted:#eef2f8; --shadow:0 8px 24px rgba(11,17,31,.08); }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0; font-family:Inter,system-ui,Segoe UI,Arial; color:var(--text); background:
+radial-gradient(1000px 500px at 100% -10%, rgba(143,167,255,.12), transparent 60%),
+radial-gradient(800px 500px at -10% 30%, rgba(110,231,183,.10), transparent 60%), var(--bg);
+line-height:1.6}
+a{color:var(--brand); text-decoration:none}
+a:hover{text-decoration:underline}
+.container{width:min(1100px,92%); margin:0 auto}
+.btn{display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.05rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--sub) 25%, transparent); background:var(--muted); color:var(--text); font-weight:700}
+.btn.primary{background:linear-gradient(135deg,var(--brand),var(--accent)); color:#0b0f18; border:0; box-shadow:0 10px 24px rgba(143,167,255,.25)}
+header.nav{position:sticky; top:0; z-index:50; backdrop-filter:saturate(120%) blur(8px); background:color-mix(in oklab, var(--bg) 70%, transparent); border-bottom:1px solid color-mix(in oklab, var(--sub) 12%, transparent)}
+.nav-inner{display:flex; align-items:center; justify-content:space-between; padding:.9rem 0}
+.brand{display:flex; align-items:center; gap:.6rem; font-weight:800; letter-spacing:.3px}
+.logo{width:36px; height:36px; border-radius:12px; background:conic-gradient(from 120deg, var(--brand), var(--accent), var(--brand)); box-shadow:0 6px 16px rgba(143,167,255,.35)}
+nav ul{list-style:none; display:flex; gap:1.2rem; padding:0; margin:0}
+nav a{color:var(--sub); font-weight:700}
+nav a:hover{color:var(--text)}
+.theme-toggle{border-radius:999px; border:1px solid color-mix(in oklab, var(--sub) 25%, transparent); background:var(--card); padding:.5rem .8rem; cursor:pointer; color:var(--sub)}
+
+
+.hero{padding:6rem 0 3rem; display:grid; grid-template-columns:1.1fr .9fr; gap:2rem; align-items:center}
+.title{font-family:"Playfair Display",serif; font-weight:700; font-size:clamp(2rem,5vw,3.2rem); line-height:1.1; margin:0 0 1rem}
+.subtitle{color:var(--sub); font-size:clamp(1rem,2.2vw,1.15rem); margin:0 0 1.3rem}
+.chips{display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0 1.6rem}
+.chip{background:var(--muted); color:var(--text); padding:.45rem .7rem; border-radius:999px; border:1px solid color-mix(in oklab, var(--sub) 12%, transparent); font-size:.9rem}
+
+
+.card{background:var(--card); border:1px solid color-mix(in oklab, var(--sub) 12%, transparent); border-radius:var(--r); box-shadow:var(--shadow)}
+.hero-card{aspect-ratio:4/3; display:grid; place-items:center; position:relative; overflow:hidden}
+.blob{position:absolute; width:240px; height:240px; border-radius:50%; filter:blur(28px); opacity:.55}
+.blob.one{background:var(--brand); top:8%; left:8%}
+.blob.two{background:var(--accent); right:-6%; bottom:-6%}
+.pfp{width:120px; height:120px; border-radius:24px; background:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=300&auto=format&fit=crop') center/cover; border:4px solid color-mix(in oklab, var(--panel) 40%, transparent); box-shadow:var(--shadow); position:relative; z-index:1}
+
+
+section{padding:3.5rem 0}
+.section-title{font-size:1.6rem; margin:0 0 1.2rem}
+.grid{display:grid; gap:1.1rem}
+.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+
+.project{display:flex; flex-direction:column; overflow:hidden; transition:transform .15s ease}
+.project:hover{transform:translateY(-2px)}
+.project .thumb{aspect-ratio:16/10; background:#0c1018; position:relative; overflow:hidden}
+.project .thumb img{width:100%; height:100%; object-fit:cover; display:block}
+.project .meta{padding:1rem}
+.tag{display:inline-block; font-size:.8rem; color:var(--sub); background:var(--muted); padding:.25rem .5rem; border-radius:8px}
+
+
+.skills{display:flex; flex-wrap:wrap; gap:.6rem}
+.pill{background:var(--muted); border:1px solid color-mix(in oklab, var(--sub) 12%, transparent); padding:.55rem .75rem; border-radius:999px; font-weight:700}
+
+
+.timeline{border-left:2px solid color-mix(in oklab, var(--sub) 18%, transparent); margin-left:.6rem; padding-left:1rem}
+.timeline .item{margin:1rem 0}
+.timeline .item h4{margin:.2rem 0}
+.timeline .item .when{color:var(--sub); font-size:.95rem}
+
+
+.contact{display:grid; grid-template-columns:1fr 1fr; gap:1rem}
+.field{display:flex; flex-direction:column; gap:.35rem}
+input,textarea{background:var(--panel); border:1px solid color-mix(in oklab, var(--sub) 14%, transparent); color:var(--text); border-radius:12px; padding:.9rem 1rem; font:inherit}
+textarea{min-height:140px; resize:vertical}
+footer{padding:2.5rem 0 3.5rem; color:var(--sub)}
+
+
+@media (max-width:900px){
+.hero{grid-template-columns:1fr; padding-top:4.2rem}
+.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}
+.contact{grid-template-columns:1fr}
+nav ul{display:none}
+}
+</style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <h1>Vittorio Ratto</h1>
-        <p>Software Engineer | Designer | Programmer</p>
-    </header>
-    
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a passionate software engineer specializing in modern web technologies and user-friendly design. With a keen eye for detail and a drive to create intuitive solutions, I bring ideas to life.</p>
-    </section>
-    
-    <section id="projects">
-        <h2>Projects</h2>
-        
-        <div class="project">
-            <img src="images/portfolio.png" alt="Portfolio Website">
-            <h3>Portfolio Website</h3>
-            <p>A responsive portfolio website built with HTML, CSS, and JavaScript.</p>
-            <a href="https://github.com/VITTOVOX/Portfolio" target="_blank">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/ecommerce.png" alt="E-commerce Platform">
-            <h3>E-commerce Platform</h3>
-            <p>An online shopping platform built with React and Node.js.</p>
-            <a href="https://github.com/VITTOVOX/Ecommerce" target="_blank">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/taskmanager.png" alt="Task Manager App">
-            <h3>Task Manager App</h3>
-            <p>A simple to-do list application using Python and Flask.</p>
-            <a href="https://github.com/VITTOVOX/TaskManager" target="_blank">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/bmi.png" alt="BMI Calculator">
-            <h3>BMI Calculator</h3>
-            <p>A Python-based BMI calculator that helps users track their health.</p>
-            <a href="https://github.com/VITTOVOX/BMI_TASK" target="_blank">View Project</a>
-        </div>
-
-        <div class="project">
-            <img src="images/finance.png" alt="Finance Calculator">
-            <h3>Finance Calculator</h3>
-            <p>A Python script that calculates interest rates and loan repayments.</p>
-         
-    <section id="contact">
-        <h2>Contact</h2>
-        <p><strong>Phone:</strong> +254 723 701 484</p>
-        <p><strong>Email:</strong> <a href="mailto:vittorioratto123@gmail.com">vittorioratto123@gmail.com</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/vittorio-ratto-b00214317/" target="_blank">Vittorio Ratto</a></p>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 Vittorio Ratto | All Rights Reserved</p>
-    </footer>
-</body>
+<header class="nav">
+<div class="container nav-inner">
+<div class="brand">
 </html>
-   <a href="https://github.com/VITTOVOX/finance_calculators" target="_blank">View Project</a>
-        </div>
-    </section>
-    
